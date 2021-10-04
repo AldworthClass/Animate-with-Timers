@@ -27,8 +27,16 @@ namespace Animate_with_Timers
         private void tmrMoveBoat_Tick(object sender, EventArgs e)
         {
             imgBoat.Left += hSpeed;
-            imgBoat.Top += vSpeed;
+            if (imgBoat.Right >= this.ClientSize.Width || imgBoat.Left <= 0)
+            {
+                hSpeed *= -1;
+            }
 
+            imgBoat.Top += vSpeed;
+            if (imgBoat.Top <= 0 || imgBoat.Bottom >= this.ClientSize.Height)
+            {
+                vSpeed *= -1;
+            }
 
         }
     }
